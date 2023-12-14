@@ -3,6 +3,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { ArrowDownToLine, CheckCircle, Leaf } from "lucide-react";
 import Link from "next/link";
 
+// Constant used to define and map out company deliverables
 const perks = [
   {
     name: "Instant Delivery",

@@ -1,5 +1,6 @@
 import { LucideProps } from "lucide-react";
 
+// Component to host all svg icons used throughout the client
 export const Icons = {
     logo: (props: LucideProps) => (
     <svg {...props} viewBox="0 0 512 512">

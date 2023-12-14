@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Icons } from "./Icons";
 import NavItems from "./NavItems";
 
+// Component for navbar to host essential page items
 const Navbar = () => {
   return (
     <div className="bg-white sticky z-50 top-0 inset-x-0 h-16">

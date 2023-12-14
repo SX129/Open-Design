@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 import React, {ReactNode} from 'react'
 
-// Component to ensure dynamic changes on components
+// Component to ensure a default look on other components with the option to adjust the look
 const MaxWidthWrapper = ({
     className,
     children
