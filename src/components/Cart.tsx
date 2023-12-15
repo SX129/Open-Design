@@ -11,6 +11,8 @@ const Cart = () => {
     // Mock data
     const itemCount = 1
 
+    const fee = 1
+
   return (
     <Sheet>
       <SheetTrigger className="group -m-2 flex items-center p-2">
@@ -43,7 +45,7 @@ const Cart = () => {
                         </div>
                         <div className="flex">
                             <span className="flex-1">Transaction Fee</span>
-                            <span>{formatPrice(1)}</span>
+                            <span>{formatPrice(fee)}</span>
                         </div>
                     </div>
                 </div>
