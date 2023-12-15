@@ -1,7 +1,8 @@
 "use client";
 import { PRODUCT_CATEGORIES } from "@/config";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import NavItem from "./NavItem";
+import { useOnClickOutside } from "@/hooks/use-on-click-outside";
 
 // Component for different items used on the navbar
 const NavItems = () => {
@@ -9,6 +10,10 @@ const NavItems = () => {
   const [activeIndex, setActiveIndex] = useState<null | number>(null);
 
   const isAnyOpen = activeIndex !== null
+
+  // Ref hook to check if user is clicking outside of navbar
+  const navRef = useRef<HTMLDivElement | null>(null)
+  useOnClickOutside(navRef, () => setActiveIndex(null))
 
   return (
     <div className="flex gap-4 h-full">
