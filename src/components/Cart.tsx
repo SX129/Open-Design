@@ -3,8 +3,13 @@
 import React from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { ShoppingCart } from "lucide-react";
+import { Separator } from "./ui/separator";
 
 const Cart = () => {
+    
+    // Mock data
+    const itemCount = 0
+
   return (
     <Sheet>
       <SheetTrigger className="group -m-2 flex items-center p-2">
@@ -22,6 +27,17 @@ const Cart = () => {
                 Cart (0)
             </SheetTitle>
         </SheetHeader>
+        {itemCount > 0 ? (
+            <>
+                <div className="flex w-full flex-col pr-6">
+                    {/*TODO: Cart logic */}
+                    Cart Items
+                </div>
+                <div className="space-y-4 pr-6">
+                    <Separator />
+                </div>
+            </>
+        ) : ()}
       </SheetContent>
     </Sheet>
   );
