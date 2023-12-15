@@ -1,6 +1,6 @@
 "use client";
 import { PRODUCT_CATEGORIES } from "@/config";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import NavItem from "./NavItem";
 import { useOnClickOutside } from "@/hooks/use-on-click-outside";
 
@@ -8,6 +8,22 @@ import { useOnClickOutside } from "@/hooks/use-on-click-outside";
 const NavItems = () => {
   // State hook with <> typescript generic values of only null or number with a default value of null
   const [activeIndex, setActiveIndex] = useState<null | number>(null);
+
+  // Effect hook to check if user presses 'escape' key
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if(e.key === "Escape"){
+        setActiveIndex(null)
+      }
+    }
+
+    document.addEventListener("keydown", handler)
+
+    // Clean up
+    return () => {
+      document.removeEventListener("keydown", handler)
+    }
+  }, [])
 
   const isAnyOpen = activeIndex !== null;
 
