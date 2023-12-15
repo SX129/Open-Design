@@ -9,14 +9,14 @@ const NavItems = () => {
   // State hook with <> typescript generic values of only null or number with a default value of null
   const [activeIndex, setActiveIndex] = useState<null | number>(null);
 
-  const isAnyOpen = activeIndex !== null
+  const isAnyOpen = activeIndex !== null;
 
   // Ref hook to check if user is clicking outside of navbar
-  const navRef = useRef<HTMLDivElement | null>(null)
-  useOnClickOutside(navRef, () => setActiveIndex(null))
+  const navRef = useRef<HTMLDivElement | null>(null);
+  useOnClickOutside(navRef, () => setActiveIndex(null));
 
   return (
-    <div className="flex gap-4 h-full">
+    <div className="flex gap-4 h-full" ref={navRef}>
       {PRODUCT_CATEGORIES.map((category, i) => {
         {
           /*Check for opened navbar items*/
