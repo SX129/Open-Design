@@ -4,11 +4,12 @@ import React from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { ShoppingCart } from "lucide-react";
 import { Separator } from "./ui/separator";
+import { formatPrice } from "@/lib/utils";
 
 const Cart = () => {
     
     // Mock data
-    const itemCount = 0
+    const itemCount = 1
 
   return (
     <Sheet>
@@ -35,9 +36,19 @@ const Cart = () => {
                 </div>
                 <div className="space-y-4 pr-6">
                     <Separator />
+                    <div className="space-y-1.5 text-sm">
+                        <div className="flex">
+                            <span className="flex-1">Shipping</span>
+                            <span>Free</span>
+                        </div>
+                        <div className="flex">
+                            <span className="flex-1">Transaction Fee</span>
+                            <span>{formatPrice(1)}</span>
+                        </div>
+                    </div>
                 </div>
             </>
-        ) : ()}
+        ) : (<div></div>)}
       </SheetContent>
     </Sheet>
   );
