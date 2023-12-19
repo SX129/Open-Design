@@ -1,7 +1,7 @@
 "use client"
 
 import { Icons } from "@/components/Icons";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
@@ -24,7 +24,7 @@ const Page = () => {
               })}
               href="/sign-in"
             >
-              Already have an account? Sign-in
+              Already have an account? Sign In
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -46,6 +46,7 @@ const Page = () => {
                         })} 
                         placeholder="Password" />
                     </div>
+                    <Button>Sign Up</Button>
                 </div>
             </form>
           </div>
