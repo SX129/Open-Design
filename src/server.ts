@@ -1,10 +1,14 @@
 import express from "express";
 import { getPayloadClient } from "./get-payload";
 import { nextApp, nextHandler } from "./next-utils";
+import * as trpcExpress from "@trpc/server/adapters/express";
+import { appRouter } from "./trpc";
 
 // Initalizing server with payloadCMS
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
+
+const createContext = ({req, res}: trpcExpress.CreateExpressContextOptions) => ({req, res});
 
 const start = async () => {
     const payload = await getPayloadClient({
@@ -12,9 +16,15 @@ const start = async () => {
             express: app,
             onInit: async (cms) => {
                 cms.logger.info(`Admin URL: ${cms.getAdminURL}`)
-            }
-        }
+            },
+        },
     });
+
+    // trpc middleware to forward endpoint to local nextjs
+    app.use('/api/trpc', trpcExpress.createExpressMiddleware({
+        router: appRouter,
+        createContext
+    }));
 
     app.use((req, res) => nextHandler(req, res));
 
