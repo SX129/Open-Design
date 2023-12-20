@@ -11,6 +11,7 @@ export const Users: CollectionConfig = {
     fields: [
         {
             name: "role",
+            required: true,
             admin: {
                 condition: () => false,
             },
