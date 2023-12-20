@@ -10,10 +10,13 @@ import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AuthCredientialsValidator, TAuthCredientialsValidator } from "@/lib/validators/account-credientials-validator";
+import {
+  AuthCredientialsValidator,
+  TAuthCredientialsValidator,
+} from "@/lib/validators/account-credientials-validator";
+import { trpc } from "@/trpc/client";
 
 const Page = () => {
-
   // Setting up user sign-up form hook
   const {
     register,
@@ -24,9 +27,9 @@ const Page = () => {
   });
 
   // Submit handler
-  const onSubmit = ({email, password}: TAuthCredientialsValidator) => {
+  const onSubmit = ({ email, password }: TAuthCredientialsValidator) => {
     // TODO: Send data to backend
-  }
+  };
 
   return (
     <>
@@ -47,7 +50,7 @@ const Page = () => {
             </Link>
           </div>
           <div className="grid gap-6">
-            <form onSubmit={handleSubmit(onSubmit)} >
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="grid gap-2">
                 <div className="grid gap-1 py-2">
                   <Label htmlFor="email">Email</Label>
