@@ -3,15 +3,17 @@ import { buildConfig } from "payload/config";
 import { slateEditor } from "@payloadcms/richtext-slate";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import path from "path";
+import { Users } from "./collections/Users";
 
-// Properties for CMS
+// Properties for CMS console
 export default buildConfig({
     serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
-    collections: [],
+    collections: [Users],
     routes: {
         admin: '/sell'
     },
     admin: {
+        user: "users",
         bundler: webpackBundler(),
         meta:{
             titleSuffix: "- OpenDesign",
