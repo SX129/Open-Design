@@ -4,6 +4,11 @@ import { slateEditor } from "@payloadcms/richtext-slate";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import path from "path";
 import { Users } from "./collections/Users";
+import dotenv from "dotenv";
+
+dotenv.config({
+    path: path.resolve(__dirname, "../.env")
+})
 
 // Properties for CMS console
 export default buildConfig({
