@@ -2,6 +2,7 @@
 
 import { trpc } from '@/trpc/client'
 import { XCircle } from 'lucide-react'
+import Image from 'next/image'
 import React from 'react'
 
 interface VerifyEmailProps {
@@ -23,6 +24,16 @@ const VerifyEmail = ({token}: VerifyEmailProps) => {
                 <p className='text-muted-foreground text-sm'>
                     This token is not valid or expired. Please try again.
                 </p>
+            </div>
+        )
+    }
+
+    if(data?.success){
+        return (
+            <div className='flex h-full flex-col items-center justify-center'>
+                <div className='relative mb-4 h-60 w-60 text-muted-foreground'>
+                    <Image src='/hippo-email-sent.png' fill alt='email was sent' />
+                </div>
             </div>
         )
     }
