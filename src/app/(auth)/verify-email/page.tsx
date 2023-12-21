@@ -1,3 +1,4 @@
+import VerifyEmail from '@/components/VerifyEmail';
 import Image from 'next/image';
 import React from 'react'
 
@@ -7,7 +8,7 @@ interface PageProps {
     }
 }
 
-
+// Landing page for email verification
 const VerifyEmailPage = ({searchParams}: PageProps) => {
 
     const token = searchParams.token;
@@ -18,7 +19,7 @@ const VerifyEmailPage = ({searchParams}: PageProps) => {
         <div className='mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]'>
             {token && typeof token === "string" ? (
                 <div className='grid gap-6'>
-
+                    <VerifyEmail token={token} />
                 </div>
             ) : (
                 <div className='flex h-full flex-col items-center justify-center space-y-1'>
