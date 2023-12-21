@@ -16,6 +16,7 @@ import {
 } from "@/lib/validators/account-credientials-validator";
 import { trpc } from "@/trpc/client";
 
+// Landing page for sign-up
 const Page = () => {
   // Setting up user sign-up form hook
   const {
