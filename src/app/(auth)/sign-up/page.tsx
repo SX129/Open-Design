@@ -15,6 +15,7 @@ import {
   TAuthCredientialsValidator,
 } from "@/lib/validators/account-credientials-validator";
 import { trpc } from "@/trpc/client";
+import {toast} from 'sonner';
 
 // Landing page for sign-up
 const Page = () => {
@@ -27,7 +28,14 @@ const Page = () => {
     resolver: zodResolver(AuthCredientialsValidator),
   });
 
-  const {mutate, isLoading} = trpc.auth.createPayloadUser.useMutation({});
+  const {mutate, isLoading} = trpc.auth.createPayloadUser.useMutation({
+    onError: (err) => {
+      //Existing email being used
+      if(err.data?.code === "CONFLICT"){
+        toast.error("This email is already in use. Sign in instead?")
+      }
+    }
+  });
 
   // Submit handler
   const onSubmit = ({ email, password }: TAuthCredientialsValidator) => {
