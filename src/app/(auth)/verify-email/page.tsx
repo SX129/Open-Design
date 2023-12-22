@@ -11,6 +11,7 @@ interface PageProps {
 // Landing page for email verification
 const VerifyEmailPage = ({searchParams}: PageProps) => {
 
+    // Search page parameter for token and toEmail (/verify-email?token=)
     const token = searchParams.token;
     const toEmail = searchParams.to;
 
