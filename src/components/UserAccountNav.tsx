@@ -1,9 +1,10 @@
 "use client"
 
 import React from 'react'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from './ui/dropdown-menu'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from './ui/dropdown-menu'
 import { Button } from './ui/button'
 import { User } from '@/payload-types'
+import Link from 'next/link'
 
 // Component shown after user logs in
 const UserAccountNav = ({user}: {user: User}) => {
@@ -18,6 +19,12 @@ const UserAccountNav = ({user}: {user: User}) => {
                     <p className='font-medium text-sm text-black'>{user.email}</p>
                 </div>
             </div>
+
+            <DropdownMenuSeparator />
+
+            <DropdownMenuItem asChild>
+                <Link href='/sell'>Seller Dashboard</Link>
+            </DropdownMenuItem>
         </DropdownMenuContent>
     </DropdownMenu>
   )
