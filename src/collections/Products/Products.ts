@@ -1,7 +1,7 @@
 import { PRODUCT_CATEGORIES } from "../../config";
 import { CollectionConfig } from "payload/types";
 
-// Defining product type and fields
+// Defining product collection and fields
 export const Products: CollectionConfig = {
     slug: "products",
     admin: {

@@ -1,6 +1,6 @@
 import { CollectionConfig } from "payload/types";
 
-// Defining and authenticating types of users
+// Defining and authenticating collection of users
 export const Users: CollectionConfig = {
     slug: "users",
     auth: {
