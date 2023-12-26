@@ -1,6 +1,6 @@
 import { CollectionConfig } from "payload/types";
 
-/// Defining media collection and fields
+// Defining media collection and fields
 export const Media: CollectionConfig = {
     slug: "media",
     hooks: {
