@@ -41,7 +41,7 @@ export default function Home() {
           <Button variant='ghost'>Our quality promise &rarr;</Button>
         </div>
       </div>
-      <ProductReel />
+      <ProductReel title="Brand New" href="/products"/>
     </MaxWidthWrapper>
 
     <section className="border-t border-gray-200 bg-gray-50">
