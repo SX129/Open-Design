@@ -1,14 +1,16 @@
+import Link from 'next/link'
 import React from 'react'
 
 interface ProductReelProps {
   title: string
   subtitle?: string
+  href?: string
 }
 
 // Component to showcase products
 const ProductReel = (props: ProductReelProps) => {
 
-  const {title, subtitle} = props
+  const {title, subtitle, href} = props
 
   return (
     <section className='py-12'>
@@ -17,6 +19,8 @@ const ProductReel = (props: ProductReelProps) => {
           {title ? <h1 className='text-2xl font-bold text-gray-900 sm:text-3xl'>{title}</h1> : null}
           {subtitle ? <p className='mt-2 text-sm text-muted-foreground'>{subtitle}</p> : null}
         </div>
+
+        {href ? <Link className="hidden text-sm font-medium text-blue-600 hover:text-blue-500 md:block" href={href}>Shop the collection <span aria-hidden="true">&rarr;</span></Link> : null}
       </div>
     </section>
   )
