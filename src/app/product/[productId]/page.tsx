@@ -1,5 +1,8 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import { PRODUCT_CATEGORIES } from '@/config'
 import { getPayloadClient } from '@/get-payload'
+import { formatPrice } from '@/lib/utils'
+import { Check } from 'lucide-react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import React from 'react'
@@ -41,6 +44,8 @@ const page = async ({params}: PageProps) => {
 
     if(!product) return notFound()
 
+    const label = PRODUCT_CATEGORIES.find(({value}) => value === product.category)?.label
+
   return (
     <MaxWidthWrapper className='bg-white'>
         <div className='bg-white'>
@@ -69,8 +74,31 @@ const page = async ({params}: PageProps) => {
                     </ol>
 
                     <div className='mt-4'>
-                        <h1>{product.name}</h1>
+                        <h1 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>{product.name}</h1>
                     </div>
+
+                    <section className='mt-4'>
+                        <div className='flex items-center'>
+                            <p className='font-medium text-gray-900'>
+                                {formatPrice(product.price)}
+                            </p>
+
+                            <div className='ml-4 border-l text-muted-foreground border-gray-300 pl-4'>
+                                {label}
+                            </div>
+                        </div>
+
+                        <div className='mt-4 space-y-6'>
+                            <p className='text-base text-muted-foreground'>
+                                {product.description}
+                            </p>
+                        </div>
+
+                        <div className='mt-6 flex items-center'>
+                            <Check aria-hidden="true" className='h-5 w-5 flex-shrink-0 text-green-500' />
+                            <p className='ml-2 text-sm text-muted-foreground'>Instant delivery</p>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
