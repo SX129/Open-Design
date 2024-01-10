@@ -1,5 +1,5 @@
 import { Product } from '../../payload-types'
-import React from 'react'
+import * as React from 'react'
 import {Body, Container, Column, Head, Hr, Html, Img, Link, Preview, Row, Section, Text, render} from "@react-email/components"
 import { formatPrice } from '../../lib/utils'
 import {format} from "date-fns"
