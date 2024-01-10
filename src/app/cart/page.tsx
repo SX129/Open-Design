@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { PRODUCT_CATEGORIES } from '@/config'
 import { useCart } from '@/hooks/use-cart'
 import { cn, formatPrice } from '@/lib/utils'
-import { Check, X } from 'lucide-react'
+import { Check, Loader2, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
@@ -13,6 +13,7 @@ import React, { useEffect, useState } from 'react'
 const page = () => {
 
     const {items, removeItem} = useCart()
+    const cartTotal = items.reduce((total, {product}) => total + product.price, 0)
 
     const [isMounted, setIsMounted] = useState<boolean>(false)
 
@@ -105,6 +106,22 @@ const page = () => {
                         })}
                     </ul>
                 </div>
+
+                <section className='mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8'>
+                    <h2 className='text-lg font-medium text-gray-900'>
+                        Order Summary
+                    </h2>
+                    <div className='mt-6 space-y-4'>
+                        <div className='flex items-center justify-between'>
+                            <p className='text-sm text-gray-600'>
+                                Subtotal
+                            </p>
+                            <p className='text-sm font-medium text-gray-900'>
+                                {isMounted ? formatPrice(cartTotal) : <Loader2 className='h-4 w-4 animate-spin text-muted-foreground' />}
+                            </p>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
