@@ -13,7 +13,7 @@ const AddToCartButton = ({product}: {product: Product}) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsSuccess(false);
-    }, 2000);
+    }, 200);
 
     return () => clearTimeout(timeout);
   }, []);
