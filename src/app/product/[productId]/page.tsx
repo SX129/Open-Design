@@ -1,5 +1,7 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import { getPayloadClient } from '@/get-payload'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import React from 'react'
 
 interface PageProps {
@@ -18,7 +20,27 @@ const BREADCRUMBS = [
 ]
 
 // Component for current product page
-const page = ({params}: PageProps) => {
+const page = async ({params}: PageProps) => {
+
+    const {productId} = params
+    const payload = await getPayloadClient();
+    const {docs: products} = await payload.find({
+        collection: "products",
+        limit: 1,
+        where: {
+            id: {
+                equals: productId
+            },
+            approvedForSale: {
+                equals: "approved",
+            },
+        },
+    })
+
+    const [product] = products
+
+    if(!product) return notFound()
+
   return (
     <MaxWidthWrapper className='bg-white'>
         <div className='bg-white'>
@@ -45,6 +67,10 @@ const page = ({params}: PageProps) => {
                             </li>
                         ))}
                     </ol>
+
+                    <div className='mt-4'>
+                        <h1>{product.name}</h1>
+                    </div>
                 </div>
             </div>
         </div>
