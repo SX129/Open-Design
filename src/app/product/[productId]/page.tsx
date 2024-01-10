@@ -1,3 +1,4 @@
+import ImageSlider from '@/components/ImageSlider'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import { PRODUCT_CATEGORIES } from '@/config'
 import { getPayloadClient } from '@/get-payload'
@@ -45,6 +46,8 @@ const page = async ({params}: PageProps) => {
     if(!product) return notFound()
 
     const label = PRODUCT_CATEGORIES.find(({value}) => value === product.category)?.label
+
+    const validUrls = product.images.map(({image}) => (typeof image === "string" ? image : image.url)).filter(Boolean) as string[]
 
   return (
     <MaxWidthWrapper className='bg-white'>
@@ -99,6 +102,13 @@ const page = async ({params}: PageProps) => {
                             <p className='ml-2 text-sm text-muted-foreground'>Instant delivery</p>
                         </div>
                     </section>
+                </div>
+
+                {/* Product Images */}
+                <div className='mt-10 lg:col-start-2 lg:row-start-2 lg:mt-0 lg:self-center'>
+                    <div className='aspect-square rounded-lg'>
+                        <ImageSlider urls={validUrls}/>
+                    </div>
                 </div>
             </div>
         </div>
