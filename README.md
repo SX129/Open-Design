@@ -1,13 +1,13 @@
 # Open Design
 
-An online marketplace where users can buy and sell digital products, such as Icons and UI Kits. To ensure the highest-quality of products, admins must verify each product through the admin console before it can be displayed and purchased by users. This project also incorporates session shopping carts with stripe payments that sends an email receipt to the consumer.
+Open design is an online marketplace where users can buy and sell digital products, such as Icons and UI Kits. To ensure the highest-quality of products, admins must verify each product through the admin console before it can be displayed and purchased by users. This project also incorporates session shopping carts with stripe payments that sends an email receipt to the consumer.
 
 
 ## Tech Stack
 
-**Client:** Next.JS, React, Typescript, TailwindCSS
+**Client:** Next.JS, React, Typescript, TailwindCSS, ShadCN, Sonner, Zod, tRPC, Lucide
 
-**Server:** Node, Typescript, MongoDB, PayloadCMS, Express
+**Server:** Node, Typescript, MongoDB, PayloadCMS, Express, Resend, Stripe
 
 
 ## Features
